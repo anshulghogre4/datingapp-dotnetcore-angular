@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // we can add service here anywhere above "var app = builder.Build();" this line
 
-
+builder.Services.AddControllers();
 builder.Services.AddDbContext<DataContext>(opt =>
 {
     //here we're configuring the connection string and making the name of  connection string name as "defaultConnection"
@@ -17,7 +17,7 @@ builder.Services.AddDbContext<DataContext>(opt =>
 });
 
 
-builder.Services.AddControllers();
+
 
 
 
