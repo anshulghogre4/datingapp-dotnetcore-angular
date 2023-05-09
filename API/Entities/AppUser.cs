@@ -12,9 +12,6 @@ namespace API.Entities
         // while in string it can be optional means string can be null aswell
         //currently we disabled the nullable
 
-        public byte[] PasswordHash { get; set; }
-
-        public byte[] PasswordSalt { get; set; }
 
     }
 }
