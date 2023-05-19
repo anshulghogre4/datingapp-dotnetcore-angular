@@ -16,14 +16,18 @@
                 <a class="nav-link ">Logout</a>
             </li>
         </ul>
+        <div *ngIf="loggedIn" class="btn-group" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-dark dropdown-toggle text-light"
+                aria-controls="dropdown-basic">
+                Welcome User <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu mt-3" role="menu" aria-labelledby="button-basic">
+                <li role="menuitem"><a class="dropdown-item" href="#">Edit</a></li>
+                <li role="menuitem"><a class="dropdown-item" (click)="logout()" href="#">Logout</a></li>
 
-        <div *ngIf="loggedIn" class="dropdown">
-            <a class="dropdown-toggle text-light">Welcome User</a>
-            <div class="dropdown-menu">
-                <a class="dropdowm-item">Edit Profile</a>
-                <a (click)="logout()" class="dropdowm-item">Logout</a>
-            </div>
+            </ul>
         </div>
+
         <form *ngIf="!loggedIn" #LoginForm="ngForm" (ngSubmit)="login()" class="d-flex" autocomplete="off">
             <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="text"
                 placeholder="Username">

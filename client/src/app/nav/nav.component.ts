@@ -19,10 +19,20 @@ export class NavComponent implements OnInit {
     }
 
   ngOnInit(): void {
-   
+    this.getCurrentUser();
   }
+      getCurrentUser(){
+        this.accountService.currentUser$.subscribe(
+          {
+            next: user => this.loggedIn = !! user,
+            //double exclamationmarks are used to convert value of "user" to boolean type
+            //In simpler terms, the expression this.loggedIn = !!user can be read as "assign the boolean value true to this.loggedIn if user is truthy, otherwise assign the boolean value false". It provides a concise way to convert a truthy/falsy value into a boolean value.
+            error:error => console.log(error)
+          }
+        )
+      }
 
-       login =()=>{
+      login =()=>{
         this.accountService.login(this.model).subscribe({
           next: response => {
             console.log(response),
@@ -33,6 +43,8 @@ export class NavComponent implements OnInit {
       }
 
       logout = () =>{
+      
+        this.accountService.logout();
         this.loggedIn =false;
       }
 
